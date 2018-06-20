@@ -15,16 +15,19 @@ public class ProcessorRepositoryApplication {
 	
 	@RestController
 	class HomeController {
-		
+
 		@Value("${application.uri}")
 		private String uri;
-		
+
+		//app register --name simple-message-processor --type processor --uri https://<application name>.cfapps.io/simple-message-processor.jar
 		@GetMapping("/")
 		public String home() {
 			if (uri.contains("localhost")) {
-				return "Use " + uri + "/simple-message-processor.jar to get the processor, " + " use " + uri + "/routing-rules.groovy to get the router";
+				return "app register --name simple-message-processor --type processor --uri http://" + uri + "/simple-mesage-processor-0.0.1-SNAPSHOT.jar";
 			}
-			return "Use https://" + uri + "/simple-message-processor.jar get the processor," + " use " + uri + "/routing-rules.groovy to get the router";
+			return "app register --name simple-message-processor --type processor --uri https://" + uri + "/simple-mesage-processor-0.0.1-SNAPSHOT.jar";
+
 		}
+
 	}
 }
